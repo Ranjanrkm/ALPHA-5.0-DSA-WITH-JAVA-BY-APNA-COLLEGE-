@@ -6,12 +6,6 @@ import java.util.*; // This imports useful Java classes like Scanner.
     This program reads the radius of a circle from the user,
     calculates the area, and prints the answer.
 
-    According to the Java input-output notes in your PDFs:
-    - when one number is given, Scanner + nextDouble() is a simple and safe choice
-    - decimal output should be handled carefully
-    - Math.PI is better than writing 3.14 by hand for accuracy
-    - if exact decimal places are needed, printf("%.2f", value) can be used
-    :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
 */
 
 public class areacircle { // Keep the class name unchanged as requested.
