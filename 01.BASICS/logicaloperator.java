@@ -1,266 +1,105 @@
-public class logicaloperator { // This is the class name. It is kept the same as your code.
+/*
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Write a Java program to demonstrate the functionality of Logical Operators: 
+ * AND (&&), OR (||), and NOT (!). The program should evaluate various 
+ * relational expressions combining true and false conditions, and print the 
+ * resulting boolean values to the console.
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - No dynamic input is required for this demonstration. Values are hardcoded.
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A series of boolean values (`true` or `false`) representing the results 
+ * of the evaluated logical expressions.
+ *
+ * ==========================================
+ * Dry Run Examples:
+ * ==========================================
+ * Example 1 (Logical AND):
+ * Expression: (3 > 2) && (5 < 0)
+ * Step 1: Evaluate (3 > 2) -> TRUE
+ * Step 2: Evaluate (5 < 0) -> FALSE
+ * Step 3: TRUE && FALSE
+ * Result: false (AND requires BOTH to be true)
+ *
+ * Example 2 (Logical OR):
+ * Expression: (3 < 2) || (5 > 0)
+ * Step 1: Evaluate (3 < 2) -> FALSE
+ * Step 2: Evaluate (5 > 0) -> TRUE
+ * Step 3: FALSE || TRUE
+ * Result: true (OR requires AT LEAST ONE to be true)
+ */
 
-    public static void main(String args[]) { // Main method: Java starts execution from here.
+public class logicaloperator { 
 
-        // LOGICAL AND OPERATOR (&&)
-        // AND returns true only when BOTH conditions are true.
-
-        System.out.println((3 > 2) && (5 > 0));
-        // true && true
-        // Output: true
-
-        System.out.println((3 < 2) && (5 > 0));
-        // false && true
-        // Output: false
-
-        System.out.println((3 < 2) && (5 < 0));
-        // false && false
-        // Output: false
-
-        System.out.println((3 > 2) && (5 < 0));
-        // true && false
-        // Output: false
+    public static void main(String[] args) { 
+        
+        System.out.println("--- LOGICAL AND (&&) ---");
+        // AND returns true ONLY when BOTH conditions are true.
+        
+        System.out.println((3 > 2) && (5 > 0)); // true && true   -> Output: true
+        System.out.println((3 < 2) && (5 > 0)); // false && true  -> Output: false
+        System.out.println((3 < 2) && (5 < 0)); // false && false -> Output: false
+        System.out.println((3 > 2) && (5 < 0)); // true && false  -> Output: false
 
 
-        // LOGICAL OR OPERATOR (||)
+        System.out.println("\n--- LOGICAL OR (||) ---");
         // OR returns true if AT LEAST ONE condition is true.
-
-        System.out.println((3 > 2) || (5 > 0));
-        // true || true
-        // Output: true
-
-        System.out.println((3 < 2) || (5 > 0));
-        // false || true
-        // Output: true
-
-        System.out.println((3 < 2) || (5 < 0));
-        // false || false
-        // Output: false
-
-        System.out.println((3 > 2) || (5 < 0));
-        // true || false
-        // Output: true
+        
+        System.out.println((3 > 2) || (5 > 0)); // true || true   -> Output: true
+        System.out.println((3 < 2) || (5 > 0)); // false || true  -> Output: true
+        System.out.println((3 < 2) || (5 < 0)); // false || false -> Output: false
+        System.out.println((3 > 2) || (5 < 0)); // true || false  -> Output: true
 
 
-        // LOGICAL NOT OPERATOR (!)
-        // NOT reverses the result.
-        // true becomes false
-        // false becomes true
-
-        System.out.println(!(3 > 2));
-        // !(true)
-        // Output: false
-
-        System.out.println(!(3 < 2));
-        // !(false)
-        // Output: true
+        System.out.println("\n--- LOGICAL NOT (!) ---");
+        // NOT reverses the boolean result (true becomes false, false becomes true).
+        
+        System.out.println(!(3 > 2)); // !(true)  -> Output: false
+        System.out.println(!(3 < 2)); // !(false) -> Output: true
     }
 }
 
 /*
-WHAT THIS CODE DOES
-
-This program demonstrates logical operators in Java.
-
-The program uses:
-1) Logical AND (&&)
-2) Logical OR (||)
-3) Logical NOT (!)
-
-It checks conditions and prints either true or false.
-
-LINE-BY-LINE EXPLANATION
-
-public class logicaloperator
-This creates a class named logicaloperator.
-
-public static void main(String args[])
-This is the main method.
-Java starts execution from here.
-
-System.out.println((3 > 2) && (5 > 0));
-This checks:
-Is 3 greater than 2?
-AND
-Is 5 greater than 0?
-
-Both are true.
-So the result is true.
-
-System.out.println((3 < 2) && (5 > 0));
-This checks:
-false && true
-
-AND needs both conditions true.
-So the result is false.
-
-System.out.println((3 < 2) && (5 < 0));
-Both conditions are false.
-So result is false.
-
-System.out.println((3 > 2) && (5 < 0));
-true && false
-Result is false.
-
-System.out.println((3 > 2) || (5 > 0));
-true || true
-OR needs at least one true.
-Result is true.
-
-System.out.println((3 < 2) || (5 > 0));
-false || true
-One condition is true.
-Result is true.
-
-System.out.println((3 < 2) || (5 < 0));
-false || false
-Both are false.
-Result is false.
-
-System.out.println((3 > 2) || (5 < 0));
-true || false
-One condition is true.
-Result is true.
-
-System.out.println(!(3 > 2));
-3 > 2 is true.
-NOT reverses true to false.
-
-System.out.println(!(3 < 2));
-3 < 2 is false.
-NOT reverses false to true.
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) class
-A class is a container for Java code.
-
-2) public
-public means accessible from anywhere.
-
-3) static
-static means the method belongs to the class itself.
-
-4) void
-void means the method returns nothing.
-
-5) main
-main is the starting point of the program.
-
-6) String args[]
-This stores command-line arguments.
-
-7) logical operator
-Logical operators combine or reverse conditions.
-
-8) &&
-This is the logical AND operator.
-Result is true only when both conditions are true.
-
-9) ||
-This is the logical OR operator.
-Result is true when at least one condition is true.
-
-10) !
-This is the logical NOT operator.
-It reverses true to false and false to true.
-
-11) condition
-A condition gives either true or false.
-
-12) relational operator
-Operators like > and < compare values.
-
-13) boolean value
-true and false are boolean values.
-
-14) println
-println prints output and moves to the next line.
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Boolean logic
-This program teaches true and false logic.
-
-2) Logical operators
-The program demonstrates:
-- AND
-- OR
-- NOT
-
-3) Relational operators
-The conditions use:
->
-<
-
-4) Expression evaluation
-Java first checks the conditions and then prints the result.
-
-INPUT AND OUTPUT
-
-Input:
-No user input is needed.
-
-Output:
-true
-false
-false
-false
-true
-true
-false
-true
-false
-true
-
-DRY RUN WITH EXAMPLE
-
-Example:
-(3 > 2) && (5 > 0)
-
-Step 1:
-3 > 2
-Result: true
-
-Step 2:
-5 > 0
-Result: true
-
-Step 3:
-true && true
-Final result: true
-
-COMMON BEGINNER MISTAKES
-
-1) Confusing && and ||
-&& means BOTH conditions true.
-|| means ANY ONE condition true.
-
-2) Forgetting parentheses
-Parentheses make conditions easier to read.
-
-3) Thinking ! means not equal
-!= means not equal.
-! alone means logical NOT.
-
-4) Using = instead of ==
-= means assignment.
-== means comparison.
-
-5) Confusing true/false with strings
-true is boolean.
-"true" is a string.
-
-EASY INTERVIEW ANSWER
-
-Logical operators are used to combine or reverse conditions in Java.
-&& returns true only if both conditions are true.
-|| returns true if at least one condition is true.
-! reverses the result.
-
-ONE PRACTICE QUESTION
-
-Write a Java program that checks:
-- if a number is greater than 10 AND less than 50
-- if a number is less than 0 OR greater than 100
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Short-Circuit Evaluation: 
+ * - In an AND (&&) operation, if the first condition is FALSE, Java skips checking 
+ * the second condition entirely because the overall result will always be false.
+ * - In an OR (||) operation, if the first condition is TRUE, Java skips checking 
+ * the second condition because the overall result will always be true.
+ * This makes your code run faster and prevents potential errors (like dividing by zero).
+ * 2. Don't confuse logical operators with bitwise operators: 
+ * - && (Logical AND) vs & (Bitwise AND)
+ * - || (Logical OR) vs | (Bitwise OR)
+ * 3. Operator Precedence: The NOT (!) operator has very high precedence. Always use 
+ * parentheses carefully. For example, `!true && false` evaluates `!true` first.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "This program serves as a foundational reference for boolean logic in Java using 
+ * logical operators. I structured the code to test all possible truth-table combinations 
+ * (true/true, true/false, false/true, false/false) for both the logical AND (&&) and 
+ * logical OR (||) operators. Finally, I demonstrated the unary NOT (!) operator which 
+ * inverts boolean values. A key concept I keep in mind here for performance and safety 
+ * in real-world applications is 'short-circuit evaluation', where Java optimizes execution 
+ * by skipping unnecessary right-hand evaluations."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * All relational checks and logical evaluations take constant time, independent of 
+ * any variable size.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * The program executes in-place without dynamically allocating any extra memory.
+ */

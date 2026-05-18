@@ -1,189 +1,108 @@
-public class largestof2 { // This is the class name. It is kept the same as your code.
+/*
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Write a Java program to compare two numbers and determine which one is larger 
+ * using a standard if-else control flow statement. 
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - Two space-separated integers representing A and B.
+ * (Note: Upgraded from hardcoded variables to Scanner input for TCS NQT readiness).
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A single string indicating which number is the largest.
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Input:
+ * 10 5
+ *
+ * Step-by-step working:
+ * 1. Initialize Scanner to read from standard input.
+ * 2. Read first integer into 'A' -> A = 10.
+ * 3. Read second integer into 'B' -> B = 5.
+ * 4. Evaluate the condition (A > B) -> (10 > 5) is TRUE.
+ * 5. The program enters the 'if' block.
+ * 6. Prints "10 is largest of 2".
+ * 7. The 'else' block is completely skipped.
+ *
+ * Output:
+ * 10 is largest of 2
+ */
 
-    public static void main(String args[]) { // Main method: Java starts execution from here.
+import java.util.Scanner;
 
-        int A = 10; // Create integer variable A and store value 10.
-        int B = 5;  // Create integer variable B and store value 5.
+public class largestof2 { 
 
-        if (A > B) { // Check whether A is greater than B.
-            System.out.println("A is largest of 2"); // This runs if the condition is true.
+    public static void main(String[] args) { 
+        
+        // 1. Create a Scanner object to capture user input from the console
+        Scanner sc = new Scanner(System.in);
+        
+        // Safety check to ensure there is input to read
+        if (!sc.hasNextInt()) return; 
+        
+        // 2. Dynamically read values for A and B
+        int A = sc.nextInt(); 
+        int B = sc.nextInt(); 
+        
+        // 3. Decision Making: Compare the two variables
+        // The '>' operator checks if the left side is strictly greater than the right side.
+        if (A > B) { 
+            // 4. This block executes ONLY if the condition (A > B) evaluates to true.
+            System.out.println(A + " is largest of 2"); 
+        } 
+        else { 
+            // 5. This block executes if the condition is false (meaning B is greater than OR equal to A).
+            System.out.println(B + " is largest of 2"); 
         }
-
-        else { // This runs when the if condition is false.
-            System.out.println("B is largest of 2"); // Print that B is larger.
-        }
-
+        
+        // 6. Close the scanner to prevent memory leaks
+        sc.close();
     }
-
 }
 
 /*
-WHAT THIS CODE DOES
-
-This program compares two numbers and prints which number is larger.
-
-Here:
-A = 10
-B = 5
-
-Since 10 is greater than 5, the output becomes:
-A is largest of 2
-
-LINE-BY-LINE EXPLANATION
-
-public class largestof2
-This creates a class named largestof2.
-The class name is kept exactly the same as your code.
-
-public static void main(String args[])
-This is the main method.
-Java starts running the program from here.
-
-int A = 10;
-This creates an integer variable named A and stores 10.
-
-int B = 5;
-This creates another integer variable named B and stores 5.
-
-if (A > B)
-This checks whether A is greater than B.
-
-The > symbol means "greater than".
-
-If the condition becomes true, the code inside the if block runs.
-
-System.out.println("A is largest of 2");
-This prints:
-A is largest of 2
-
-else
-else runs when the if condition is false.
-
-System.out.println("B is largest of 2");
-This prints:
-B is largest of 2
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) class
-A class is a container that holds Java code.
-
-2) public
-public means the class or method can be accessed from anywhere.
-
-3) static
-static means the method belongs to the class itself.
-
-4) void
-void means the method does not return any value.
-
-5) main
-main is the starting point of the Java program.
-
-6) String args[]
-This is used for command-line arguments.
-
-7) int
-int is a data type for whole numbers.
-
-8) variable
-A variable stores data.
-Here, A and B are variables.
-
-9) if
-if is used to check a condition.
-
-10) else
-else runs when the if condition is false.
-
-11) condition
-A condition is something that becomes true or false.
-
-12) >
-This is called the greater than operator.
-
-13) println
-println prints output and moves to the next line.
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Decision making
-This program uses if-else to make decisions.
-
-2) Comparison operator
-The > operator compares two values.
-
-3) Boolean result
-The condition A > B becomes either true or false.
-
-4) Output
-The result is shown using System.out.println().
-
-INPUT AND OUTPUT
-
-Input:
-No user input is needed in this program.
-
-Values already given:
-A = 10
-B = 5
-
-Output:
-A is largest of 2
-
-DRY RUN WITH EXAMPLE
-
-Step 1:
-A = 10
-B = 5
-
-Step 2:
-Check:
-A > B
-
-Check becomes:
-10 > 5
-
-This is true.
-
-Step 3:
-Run the if block.
-
-Print:
-A is largest of 2
-
-Final output:
-A is largest of 2
-
-COMMON BEGINNER MISTAKES
-
-1) Using = instead of >
-Wrong:
-if (A = B)
-
-Correct:
-if (A > B)
-
-2) Forgetting braces {}
-Braces help define the block clearly.
-
-3) Confusing assignment and comparison
-= means assignment.
-> means comparison.
-
-4) Forgetting semicolons
-Every Java statement must end with a semicolon.
-
-5) Thinking else always runs
-else runs only when the if condition is false.
-
-EASY INTERVIEW ANSWER
-
-This program compares two numbers using if-else.
-If A is greater than B, it prints that A is larger.
-Otherwise, it prints that B is larger.
-
-ONE PRACTICE QUESTION
-
-Write a Java program to compare three numbers and print the largest among them.
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. The Equality Edge Case: A common logical trap in this basic `if-else` setup is 
+ * what happens if A and B are exactly the same (e.g., A = 5, B = 5). The condition `5 > 5` 
+ * evaluates to FALSE, so the code jumps to the `else` block and prints "5 is largest of 2". 
+ * While technically correct in value, in a strict coding round, you might need to handle 
+ * equality explicitly using an `else if (A == B)` block.
+ * 2. Assignment (=) vs. Comparison (== / >): Beginners often accidentally write `if (A = B)`. 
+ * A single equals sign assigns a value, which will cause a compilation error in Java because 
+ * `if` statements strictly require boolean (true/false) results.
+ * 3. Scanner Upgrade: Hardcoded values (int A = 10) are great for learning, but competitive 
+ * programming platforms always pass hidden test cases via standard input. Using `Scanner` 
+ * makes this code platform-ready.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "To solve this, I implemented a standard control flow structure using an if-else statement. 
+ * I utilized a Scanner to dynamically accept two integers, A and B. The core logic relies on 
+ * the relational operator 'greater than'. If A is strictly greater than B, the execution 
+ * routes into the 'if' block to print A. Otherwise, control falls through to the 'else' block 
+ * to print B. When preparing for technical rounds like the TCS NQT, I always make sure to 
+ * structure even basic conditionals cleanly to avoid fall-through errors, and I am aware that 
+ * for production code, we would also add an explicit check to handle the edge case where both 
+ * numbers are completely equal."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * The comparison operation (A > B) and the print statements take constant time, 
+ * regardless of how large the numbers are.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * The memory used is restricted to two primitive integer variables (A and B) and 
+ * the Scanner object, requiring a constant amount of auxiliary space on the stack.
+ */

@@ -1,171 +1,103 @@
-public class JavaBasics { // This is the class name.
+/*
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Demonstrate how to read standard input in Java using the `Scanner` class.
+ * This program acts as a reference guide for capturing various data types 
+ * (words, lines, integers, decimals) from the user. The active portion of 
+ * the code specifically reads a single floating-point number and prints it back.
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - A single decimal number (float).
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - The exact decimal number printed back to the console.
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Input:
+ * 12.5
+ *
+ * Step-by-step working:
+ * 1. Initialize the Scanner object to read from System.in.
+ * 2. The program pauses and waits for user input.
+ * 3. The user types "12.5" and presses Enter.
+ * 4. sc.nextFloat() parses the input as a float and stores it in 'price'. (price = 12.5f)
+ * 5. System.out.println(price) outputs the value to the screen.
+ *
+ * Output:
+ * 12.5
+ */
 
-    public static void main(String arg[]) { // Main method: Java starts execution from here.
+import java.util.Scanner; 
 
-        System.out.println("Hello Mr. Ranjan"); // Print the first message.
+public class input { 
 
-        System.out.println("Hello Mr. Ranjan"); // Print the second message.
-
+    public static void main(String[] args) { 
+        
+        // 1. Create a Scanner object to read input from the standard input stream (keyboard)[cite: 1322].
+        Scanner sc = new Scanner(System.in); 
+        
+        /*
+         * ---------------------------------------------------------
+         * REFERENCE: Common Scanner Methods (Commented Out)
+         * ---------------------------------------------------------
+         * String word = sc.next();       // Reads a single word (stops at the first space).
+         * String line = sc.nextLine();   // Reads an entire line of text (stops at Enter key).
+         * int number = sc.nextInt();     // Reads a whole number.
+         */
+        
+        // 2. Read one decimal number as a float.
+        // Using hasNextFloat() is a good practice to prevent InputMismatchException if the user types letters.
+        if (sc.hasNextFloat()) {
+            float price = sc.nextFloat(); 
+            
+            // 3. Print the captured value back to the console.
+            System.out.println(price); 
+        }
+        
+        // 4. Always close the Scanner after use to prevent memory and resource leaks.
+        sc.close(); 
     }
 }
 
 /*
-WHAT THIS CODE DOES
-
-This program prints the text:
-Hello Mr. Ranjan
-
-two times on the screen.
-
-This is one of the most basic Java programs and is usually used to learn:
-- class
-- main method
-- output printing
-- syntax structure
-
-LINE-BY-LINE EXPLANATION
-
-public class JavaBasics
-This creates a class named JavaBasics.
-In Java, every program must be inside a class.
-
-public static void main(String arg[])
-This is the main method.
-Java starts running the program from here.
-
-System.out.println("Hello Mr. Ranjan");
-This prints the text:
-Hello Mr. Ranjan
-
-println means:
-- print the text
-- then move to the next line
-
-The second println line prints the same message again.
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) class
-A class is a container that holds Java code.
-
-2) public
-public means the class or method can be accessed from anywhere.
-
-3) static
-static means the method belongs to the class itself, not to an object.
-
-4) void
-void means the method does not return anything.
-
-5) main
-main is the starting point of the Java program.
-
-6) String arg[]
-This stores command-line arguments.
-For beginners, you can simply remember that it is part of the main method syntax.
-
-7) System
-System is a built-in Java class.
-
-8) out
-out is used for output.
-
-9) println
-println prints output and moves the cursor to the next line.
-
-10) statement
-A statement is one instruction in Java.
-Example:
-System.out.println("Hello");
-
-11) semicolon ;
-A semicolon marks the end of a statement in Java.
-
-12) string
-Text inside double quotes is called a String.
-Example:
-"Hello Mr. Ranjan"
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Program structure
-This program teaches the basic structure of a Java program.
-
-2) Output statement
-The program uses System.out.println() to print text.
-
-3) Strings
-The printed message is a String because it is inside double quotes.
-
-4) Sequential execution
-Java runs statements one after another from top to bottom.
-
-INPUT AND OUTPUT
-
-Input:
-No input is needed.
-
-Output:
-Hello Mr. Ranjan
-Hello Mr. Ranjan
-
-DRY RUN WITH EXAMPLE
-
-Step 1:
-Java enters the main method.
-
-Step 2:
-Run first println statement.
-
-Output:
-Hello Mr. Ranjan
-
-Step 3:
-Run second println statement.
-
-Output:
-Hello Mr. Ranjan
-
-Final output:
-Hello Mr. Ranjan
-Hello Mr. Ranjan
-
-COMMON BEGINNER MISTAKES
-
-1) Forgetting semicolon
-Wrong:
-System.out.println("Hello")
-
-Correct:
-System.out.println("Hello");
-
-2) Using single quotes instead of double quotes
-Wrong:
-'Hello'
-
-Correct:
-"Hello"
-
-3) Writing Println instead of println
-Java is case-sensitive.
-
-Correct:
-println
-
-4) Forgetting braces {}
-Braces are needed to define class and method blocks.
-
-5) Changing class name incorrectly
-The file name and public class name should usually match.
-
-EASY INTERVIEW ANSWER
-
-This is a basic Java program that prints a message using System.out.println().
-It demonstrates the structure of a Java program and simple output statements.
-
-ONE PRACTICE QUESTION
-
-Write a Java program that prints:
-Welcome to Java
-Learning Java is fun
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Precision Formatting: In competitive programming platforms (like TCS NQT), 
+ * decimal formatting must often be exact. If a question asks for exactly 2 decimal 
+ * places, use `System.out.printf("%.2f\n", price);` instead of `println`[cite: 1428, 1594].
+ * 2. The "Scanner Bug" Trap: A very common beginner mistake is calling `sc.nextInt()` 
+ * or `sc.nextFloat()` and immediately following it with `sc.nextLine()`. The numeric 
+ * methods read the number but leave the newline character ('\n' or Enter key) in the 
+ * buffer[cite: 1447]. The subsequent `nextLine()` will instantly consume that newline and 
+ * return an empty string[cite: 1446]. 
+ * FIX: Always add a blank `sc.nextLine();` after reading numbers if you plan to read 
+ * full strings next[cite: 1448, 1452].
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "This is a foundational program demonstrating standard input handling in Java 
+ * using the `java.util.Scanner` class. I instantiated a Scanner object wrapped around 
+ * `System.in` to parse the input stream. For this specific demonstration, I used 
+ * `nextFloat()` to safely capture a decimal value. I also made sure to close the Scanner at 
+ * the end of the program to prevent resource leaks. If this were a strict coding assessment, 
+ * I would adapt the output using `System.out.printf` to guarantee strict decimal precision."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * Reading a single primitive value from the console and printing it executes in constant time.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * The program only allocates memory for a single primitive float variable (`price`) and 
+ * the `Scanner` object, requiring a constant amount of auxiliary space.
+ */
