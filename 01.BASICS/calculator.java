@@ -1,119 +1,136 @@
-import java.util.*; // We bring in (import) Java's utility tools, specifically the Scanner tool[cite: 6].
+/*
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Create a simple command-line calculator in Java. The program must prompt the user 
+ * to input two integer values and a mathematical operator character (+, -, *, /, %). 
+ * Based on the operator provided, the program should compute the correct arithmetic 
+ * result using a switch-case control structure and print the output.
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - A single integer 'a'.
+ * - A single integer 'b'.
+ * - A single character representing the arithmetic operator (+, -, *, /, %).
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A single integer representing the result of the arithmetic operation.
+ * - Or, a string "wrong operator" if the input operator is invalid.
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Input:
+ * 10
+ * 2
+ * /
+ *
+ * Step-by-step working:
+ * 1. Initialize Scanner to read input.
+ * 2. Read first integer into 'a'. (a = 10)
+ * 3. Read second integer into 'b'. (b = 2)
+ * 4. Read the operator character into 'operator'. (operator = '/')
+ * 5. Enter the switch(operator) block.
+ * 6. Skip case '+', '-', and '*'.
+ * 7. Match case '/'. Execute System.out.println(10 / 2).
+ * 8. Hit the 'break' statement and exit the switch block.
+ *
+ * Output:
+ * 5
+ */
 
-public class calculator { // Every Java program must start with a class. I changed 'calculator' to 'Calculator' because class names should start with a capital letter.
+import java.util.Scanner; 
+
+public class calculator { 
     
-    public static void main(String args[]) { // This is the starting point (doorway) of our program[cite: 8].
+    public static void main(String[] args) { 
         
-        // We create a tool named 'sc' to read what the user types on the keyboard (System.in)[cite: 9].
+        // 1. Initialize the Scanner tool to read keyboard input [cite: 9]
         Scanner sc = new Scanner(System.in); 
         
-        System.out.println("enter a :"); // Prints a message to the screen asking for the first number.
-        // The program waits for the user to type a whole number. We store it in a box named 'a'[cite: 11].
+        // 2. Prompt and read the first integer operand [cite: 11]
+        System.out.println("enter a :"); 
         int a = sc.nextInt(); 
         
-        System.out.println("enter b :"); // Prints a message asking for the second number.
-        // We store the second whole number in a box named 'b'[cite: 16].
+        // 3. Prompt and read the second integer operand [cite: 16]
+        System.out.println("enter b :"); 
         int b = sc.nextInt(); 
         
-        System.out.println("enter operator :"); // Asks the user for a math symbol (+, -, *, /).
-        // sc.next() reads a single word, and .charAt(0) picks the very first letter/symbol of that word.
-        // We save this symbol in a character box named 'operator'[cite: 285, 286].
+        // 4. Prompt and read the arithmetic operator character
+        System.out.println("enter operator :"); 
+        // sc.next() reads the next word, and .charAt(0) extracts its first character [cite: 285, 286]
         char operator = sc.next().charAt(0); 
         
-        // 'switch' acts like a train track director. It looks at the 'operator' and chooses the right path.
+        // 5. Use a switch statement to direct flow based on the operator character
         switch(operator) {
             case '+' : 
-                System.out.println(a+b); // If the symbol is '+', print a plus b.
-                break; // 'break' stops the code here so it doesn't accidentally run the next cases.
+                System.out.println(a + b); 
+                break; // 'break' prevents the execution from falling through to the next case
                 
             case '-' : 
-                System.out.println(a-b); // If the symbol is '-', print a minus b.
+                System.out.println(a - b); 
                 break;
                 
             case '*' : 
-                System.out.println(a*b); // If the symbol is '*', print a multiplied by b.
+                System.out.println(a * b); 
                 break;
                 
             case '/' : 
-                System.out.println(a/b); // If the symbol is '/', print a divided by b.
+                // Note: Integer division discards the remainder (e.g., 5 / 2 = 2)
+                System.out.println(a / b); 
                 break;
                 
             case '%' : 
-                System.out.println(a%b); // If the symbol is '%', print the remainder of a divided by b.
+                System.out.println(a % b); 
                 break;
                 
             default : 
-                // If the user typed a symbol that is not in our list, print an error message.
+                // Fallback for invalid operators
                 System.out.println("wrong operator"); 
         }
 
-        // We politely close the Scanner tool because we are done using it[cite: 22].
+        // 6. Close the scanner to release system resources [cite: 22]
         sc.close(); 
     }    
 }
 
-/* ============================================================================
- * WHAT THE CODE DOES
- * This program is a simple digital calculator. 
- * First, it asks the user to type two numbers.
- * Next, it asks the user to type a math symbol (like + or -).
- * Finally, it uses a "switch" to figure out which math symbol was typed, does the math, and prints the result on the screen.
- * * LINE-BY-LINE EXPLANATION
- * Line 1: `import java.util.*;` -> Tells Java to get its utility tools ready, like the Scanner for reading inputs[cite: 6].
- * Line 3: `public class Calculator {` -> Creates the main container for our code.
- * Line 5: `public static void main(String args[]) {` -> The exact engine where Java begins reading instructions[cite: 8].
- * Line 8: `Scanner sc = new Scanner(System.in);` -> Creates our "keyboard reader" tool called 'sc'[cite: 9].
- * Line 10: `System.out.println("enter a :");` -> Prints text to the screen.
- * Line 12: `int a = sc.nextInt();` -> Uses the 'sc' tool to grab the first whole number typed and saves it as 'a'[cite: 11].
- * Line 14-16: Asks for and reads the second whole number, saving it as 'b'[cite: 16].
- * Line 21: `char operator = sc.next().charAt(0);` -> Reads the symbol typed by the user and saves it as a character[cite: 285, 286].
- * Line 24: `switch(operator) {` -> Opens the switch board to check what the operator is.
- * Line 25-26: `case '+' : System.out.println(a+b); break;` -> If it's '+', add them together and then stop (break).
- * Line 28-39: Does the same thing for minus, multiply, divide, and remainder (modulo).
- * Line 41: `default : System.out.println("wrong operator");` -> A safety net in case the user typed a bad symbol.
- * Line 45: `sc.close();` -> Shuts down the reader tool to keep the computer running smoothly[cite: 22].
- * * EXPLANATION OF ALL CODING TERMS USED
- * 1. import: Like borrowing a book from the library. You bring pre-written Java code into your program.
- * 2. Scanner: A tool in Java used to take input from the console (keyboard)[cite: 122].
- * 3. Class: The blueprint of a Java program. Everything lives inside a class.
- * 4. Main Method (public static void main): The starting engine of the code. Without it, the program cannot run.
- * 5. int: Short for integer. A box that stores whole numbers like 5, -10, or 100.
- * 6. char: Short for character. A box that stores a single letter or symbol, like 'A' or '+'.
- * 7. switch: A cleaner way to write many "if/else" conditions. It switches paths based on a value.
- * 8. case: A specific path inside a switch.
- * 9. break: A command that tells the program "Stop reading here, jump out of the switch block."
- * 10. default: The fallback path if none of the 'cases' match the value.
- * * IMPORTANT JAVA CONCEPTS USED
- * 1. Standard Input/Output: Taking data in using Scanner and pushing data out using System.out.println[cite: 122, 131].
- * 2. Type Casting / Reading Characters: We cannot read a 'char' directly like an 'int'. We read a word using next() and grab the 0th (first) letter using charAt(0)[cite: 286, 287].
- * 3. Control Flow (Switch): Making the code decide which math operation to perform based on user input.
- * * INPUT AND OUTPUT ACCORDING TO THE PDFs
- * The PDFs discuss standard input reading[cite: 123, 124].
- * Here, we take single values one by one instead of an array.
- * Example Input sequence: 
- * 10
- * 5
- * *
- * Example Output:
- * 50
- * * DRY RUN WITH AN EXAMPLE
- * Imagine the user types:
- * a = 10
- * b = 2
- * operator = '/'
- * 1. `int a = sc.nextInt();` -> 'a' is 10.
- * 2. `int b = sc.nextInt();` -> 'b' is 2.
- * 3. `char operator = ...` -> 'operator' becomes '/'.
- * 4. The switch looks at 'operator'. It skips '+', skips '-', skips '*'. 
- * 5. It matches `case '/'`. It runs `System.out.println(10/2);`.
- * 6. The screen prints `5`. 
- * 7. The `break` stops the switch. Program finishes.
- * * COMMON BEGINNER MISTAKES
- * 1. The "Scanner Bug" Trap: This is a famous error highlighted in your study materials[cite: 1445, 1446]. If you read an integer using `sc.nextInt()` and immediately try to read a full string sentence using `sc.nextLine()`, the string gets completely skipped[cite: 1446]. This happens because `nextInt()` leaves the "Enter" press behind[cite: 1447]. Luckily, in this code, we used `sc.next()` instead of `nextLine()`, which safely ignores the leftover Enter key.
- * 2. Forgetting the `break;` command: If you forget the break inside the switch, the code will "fall through" and execute all the math operations below it too!
- * 3. Not closing the scanner: Forgetting `sc.close()` leaves the tool running in the background.
- * * EASY INTERVIEW ANSWER
- * "This code is a basic console calculator. It uses Java's Scanner class to take two integers and an operator character from the user. Then, it uses a switch-case statement to direct the control flow to the correct arithmetic operation and prints the result."
- * * ONE PRACTICE QUESTION
- * Right now, this calculator only handles whole numbers (int). What if a user wants to divide 5 by 2 and get 2.5? Can you change the code to use decimal numbers (`double` instead of `int`) and use `sc.nextDouble()`?
-============================================================================ */
+/*
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Character Input Parsing: Java's `Scanner` does not have a `nextChar()` method. 
+ * To read a single character, you must read the input as a String using `sc.next()` 
+ * and then extract the first character using the `.charAt(0)` string method[cite: 286, 287].
+ * 2. The Switch "Fall-Through": The `break` keyword inside each case is critical. 
+ * Without it, Java will continue executing all subsequent cases until it hits a break 
+ * or the end of the switch block, regardless of whether the case matches.
+ * 3. The "Scanner Bug" Avoidance: While the PDFs warn heavily about mixing `nextInt()` 
+ * with `nextLine()`[cite: 1445, 1446], this code is safe because it uses `sc.next()`. 
+ * Unlike `nextLine()`, `sc.next()` skips any leading whitespace (including leftover 
+ * newline characters) before reading the token.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "This implementation is a straightforward console-based calculator. I initialized 
+ * a `Scanner` object to capture user inputs for two integers and an operator[cite: 9, 122]. Because 
+ * `Scanner` lacks a native character read method, I parsed the operator by capturing 
+ * a string token with `next()` and extracting the index zero character[cite: 285, 286]. For the 
+ * core logic, I opted for a `switch` statement instead of cascaded `if-else` blocks to 
+ * improve readability and execute the corresponding arithmetic operation based on the 
+ * parsed character. I also included a default case as a robust fallback for invalid inputs."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * The execution time is constant. The switch statement performs a direct jump to the 
+ * matching case, and the arithmetic operations execute in O(1) time.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * The memory used is restricted to a few primitive variables (`a`, `b`, `operator`) 
+ * and the `Scanner` object instance, requiring O(1) auxiliary space.
+ */
