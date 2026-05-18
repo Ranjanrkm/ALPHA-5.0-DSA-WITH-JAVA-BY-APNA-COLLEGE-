@@ -1,244 +1,108 @@
-import java.util.*; // This imports Scanner and other useful utility classes.
-
 /*
-    Odd Even Program
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Write a Java program to check whether a given integer is even or odd. 
+ * The program should read the number from the standard input, use the 
+ * modulus operator to check divisibility by 2, and print the result.
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - A single integer number.
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A single string: "even" if the number is divisible by 2, otherwise "odd".
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Example 1:
+ * Input: 8
+ * Working:
+ * 1. number = 8
+ * 2. Evaluate 8 % 2. The remainder of 8 divided by 2 is 0.
+ * 3. Check condition (0 == 0) -> TRUE.
+ * 4. Print "even".
+ * Output: even
+ *
+ * Example 2:
+ * Input: 7
+ * Working:
+ * 1. number = 7
+ * 2. Evaluate 7 % 2. The remainder of 7 divided by 2 is 1.
+ * 3. Check condition (1 == 0) -> FALSE.
+ * 4. Move to the else block.
+ * 5. Print "odd".
+ * Output: odd
+ */
 
-    This program checks whether a number is even or odd.
+import java.util.Scanner; 
 
-    The PDFs you shared explain:
-    - using Scanner for integer input
-    - using if-else for decision making
-    - exact output formatting
-    - arithmetic operators like %
-    :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
-*/
+public class oddeven { 
 
-public class oddeven { // Keep the class name same as your original code.
-
-    public static void main(String args[]) { // Main method: Java starts execution here.
-
-        Scanner sc = new Scanner(System.in); // Create Scanner object to read input.
-
-        int number = sc.nextInt(); // Read one integer from the user.
-
-        // Check whether the remainder after division by 2 is 0.
-        if (number % 2 == 0) {
-
-            System.out.println("even"); // Print even if the condition is true.
-
-        } else {
-
-            System.out.println("odd"); // Print odd if the condition is false.
-
+    public static void main(String[] args) { 
+        
+        // 1. Create a Scanner object to capture user input from the console
+        Scanner sc = new Scanner(System.in); 
+        
+        // Safety check to ensure there is an integer to read
+        if (!sc.hasNextInt()) return; 
+        
+        // 2. Read the integer input from the user
+        int number = sc.nextInt(); 
+        
+        // 3. Decision Making: Check divisibility by 2 using the modulus operator (%)
+        // The modulus operator gives the remainder of a division operation.
+        if (number % 2 == 0) { 
+            // 4. If the remainder is exactly 0, the condition is true. The number is even.
+            System.out.println("even"); 
+        } 
+        else { 
+            // 5. If the remainder is not 0 (it will be 1 or -1), the condition is false. The number is odd.
+            System.out.println("odd"); 
         }
 
-        sc.close(); // Close Scanner after use.
+        // 6. Close the scanner to release system resources
+        sc.close(); 
     }
-
 }
 
 /*
-WHAT THIS CODE DOES
-
-This program checks whether a number is:
-- even
-or
-- odd
-
-If the number is divisible by 2, it is even.
-Otherwise, it is odd.
-
-LINE-BY-LINE EXPLANATION
-
-import java.util.*;
-This imports Scanner and other utility classes.
-
-public class oddeven
-This creates a class named oddeven.
-
-public static void main(String args[])
-This is the main method.
-Java starts execution from here.
-
-Scanner sc = new Scanner(System.in);
-This creates a Scanner object.
-Scanner is used for input.
-
-int number = sc.nextInt();
-This reads one integer from the user.
-
-if (number % 2 == 0)
-This checks whether the number is divisible by 2.
-
-% is called the modulus operator.
-It gives the remainder after division.
-
-If the remainder is 0, the number is even.
-
-System.out.println("even");
-This prints:
-even
-
-else
-This runs when the if condition is false.
-
-System.out.println("odd");
-This prints:
-odd
-
-sc.close();
-This closes the Scanner object.
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) import
-This allows Java to use ready-made classes.
-
-2) Scanner
-Scanner is used for taking input.
-
-3) class
-A class is a container for Java code.
-
-4) public
-public means accessible from anywhere.
-
-5) static
-static means the method belongs to the class itself.
-
-6) void
-void means the method returns nothing.
-
-7) main
-main is the starting point of the Java program.
-
-8) String args[]
-This stores command-line arguments.
-
-9) int
-int is a data type for whole numbers.
-
-10) variable
-A variable stores data.
-Here, number is a variable.
-
-11) if
-if checks a condition.
-
-12) else
-else runs when the if condition is false.
-
-13) %
-This is the modulus operator.
-It gives the remainder.
-
-Example:
-5 % 2 = 1
-6 % 2 = 0
-
-14) ==
-This checks equality.
-
-15) condition
-A condition becomes either true or false.
-
-16) println
-println prints output and moves to the next line.
-
-17) close()
-This closes the Scanner.
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Input handling
-The PDFs show that nextInt() is the standard method for integer input. 
-
-2) Decision making
-This program uses if-else for checking conditions.
-
-3) Arithmetic operator
-The modulus operator % is used to find the remainder.
-
-4) Comparison operator
-== checks whether two values are equal.
-
-5) Output formatting
-The PDFs explain that exact output matters in coding tests. :contentReference[oaicite:4]{index=4}
-
-INPUT AND OUTPUT ACCORDING TO THE PDFs AND THIS CODE
-
-Input:
-One integer number
-
-Example input:
-8
-
-Output:
-even
-
-Another example:
-7
-
-Output:
-odd
-
-DRY RUN WITH EXAMPLE
-
-Example input:
-7
-
-Step 1:
-number = 7
-
-Step 2:
-Check:
-7 % 2 == 0
-
-7 % 2 = 1
-
-Now:
-1 == 0
-
-This is false.
-
-Step 3:
-Run else block.
-
-Print:
-odd
-
-Final output:
-odd
-
-COMMON BEGINNER MISTAKES
-
-1) Using = instead of ==
-= means assignment.
-== means comparison.
-
-2) Forgetting %
-The modulus operator is needed for remainder checking.
-
-3) Writing number / 2 instead of number % 2
-/ gives division result.
-% gives remainder.
-
-4) Forgetting braces {}
-Braces help define blocks clearly.
-
-5) Missing semicolons
-Every Java statement must end with a semicolon.
-
-6) Not closing Scanner
-Closing Scanner is a good habit.
-
-EASY INTERVIEW ANSWER
-
-This program checks whether a number is even or odd using the modulus operator.
-If the remainder after division by 2 is 0, the number is even.
-Otherwise, it is odd.
-
-ONE PRACTICE QUESTION
-
-Write a Java program that checks whether a number is divisible by both 3 and 5.
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Modulus (%) vs Division (/): Beginners often confuse these. `7 / 2` gives the 
+ * quotient (3), while `7 % 2` gives the remainder (1). For even/odd checks, you 
+ * must always use the modulus operator to check the remainder.
+ * 2. Equality Operator (==): Be careful not to use a single equals sign (`number % 2 = 0`). 
+ * A single `=` is for assignment, while double `==` is for comparison. Java will throw 
+ * a compilation error if you use assignment inside an `if` condition.
+ * 3. Negative Numbers: In Java, the modulo operation on negative odd numbers (e.g., -5 % 2) 
+ * results in -1, not 1. However, the logic `number % 2 == 0` still perfectly captures all 
+ * even numbers (since -4 % 2 is still 0), making this approach robust.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "As a final-year IT student actively preparing for strict technical assessments like 
+ * the TCS NQT, I ensure my fundamental logic is solid and error-free. To determine if a 
+ * number is even or odd, I utilized the modulus operator (`%`). I take the user's input 
+ * via the Scanner class and evaluate `number % 2 == 0`. If the remainder of the division 
+ * by 2 is zero, it executes the 'if' block to print 'even'. Otherwise, it falls through 
+ * to the 'else' block and prints 'odd'. This approach is strictly O(1) in both time and space, 
+ * making it highly optimal."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * The modulus calculation and conditional check execute in constant time, regardless 
+ * of how large the integer is.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * Memory allocation is restricted to a single primitive variable (`number`) and the 
+ * Scanner object instance, requiring a constant amount of auxiliary space.
+ */
