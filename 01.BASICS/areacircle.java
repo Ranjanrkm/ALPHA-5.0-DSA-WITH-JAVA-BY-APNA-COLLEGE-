@@ -1,193 +1,106 @@
-import java.util.*; // This imports useful Java classes like Scanner.
-
 /*
-    Area of a Circle Program
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Write a program to calculate the area of a circle. The program should read the 
+ * radius from the user, compute the area using the standard mathematical formula, 
+ * and print the result. To ensure it passes strict competitive coding environments 
+ * (like TCS NQT), it must handle decimal inputs safely and format the output to 
+ * exactly 2 decimal places to avoid presentation errors.
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - A single floating-point number (double) representing the radius of the circle.
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A single floating-point number representing the area of the circle, 
+ * formatted to exactly 2 decimal places.
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Input: 
+ * 5
+ *
+ * Step-by-step working:
+ * 1. Initialize Scanner to read input from the console.
+ * 2. Read the input value into the variable `rad`. (rad = 5.0)
+ * 3. Calculate the area using the formula: Area = pi * r * r.
+ * -> area = Math.PI * 5.0 * 5.0
+ * -> area = 3.141592653589793 * 25.0
+ * -> area = 78.53981633974483
+ * 4. Format the output to 2 decimal places using printf("%.2f\n").
+ *
+ * Output: 
+ * 78.54
+ */
 
-    This program reads the radius of a circle from the user,
-    calculates the area, and prints the answer.
+import java.util.Scanner; 
 
-*/
+public class areacircle { 
 
-public class areacircle { // Keep the class name unchanged as requested.
-
-    public static void main(String args[]) { // Main method: Java starts running from here.
-
-        Scanner sc = new Scanner(System.in); // Create Scanner object to read input from the keyboard.
-
-        double rad = sc.nextDouble(); // Read the radius as a double so decimal values also work.
-
-        double area = Math.PI * rad * rad; // Formula: area = pi × radius × radius.
-
-        System.out.println(area); // Print the calculated area.
-
-        sc.close(); // Close Scanner after use.
+    public static void main(String[] args) { 
+        
+        // 1. Create a Scanner object to read input from the keyboard
+        Scanner sc = new Scanner(System.in); 
+        
+        // 2. Safety check: Ensure there is actually a number to read
+        if (sc.hasNextDouble()) {
+            
+            // 3. Read the radius as a double so decimal values (e.g., 2.5) work perfectly
+            double rad = sc.nextDouble(); 
+            
+            // 4. Calculate area using Java's highly accurate Math.PI constant
+            // Formula: Area = pi * radius^2
+            double area = Math.PI * rad * rad; 
+            
+            // 5. TCS NQT Standard: Format output to exactly 2 decimal places.
+            // Using printf prevents "Presentation Errors" in hidden test cases.
+            // \n is added because printf does not automatically insert a new line.
+            System.out.printf("%.2f\n", area); 
+        }
+        
+        // 6. Always close the Scanner to free up system resources and prevent memory leaks
+        sc.close(); 
     }
 }
 
 /*
-WHAT THE CODE DOES
-
-This program finds the area of a circle.
-It takes the radius from the user and uses the formula:
-
-Area = pi × radius × radius
-
-Then it prints the result.
-
-LINE-BY-LINE EXPLANATION
-
-import java.util.*;
-This line brings Scanner into the program.
-Scanner is used to take input from the user.
-
-public class areacircle
-This defines the class name.
-You asked not to change the file name, so the class name is also kept the same.
-
-public static void main(String args[])
-This is the starting point of the program.
-Java begins execution from this method.
-
-Scanner sc = new Scanner(System.in);
-This creates a Scanner object.
-It lets the program read input from the keyboard.
-
-double rad = sc.nextDouble();
-This reads the radius.
-double is used because radius can be a decimal like 2.5.
-
-double area = Math.PI * rad * rad;
-This calculates the area using the circle formula.
-Math.PI is Java’s built-in value of pi.
-
-System.out.println(area);
-This prints the answer on the screen.
-
-sc.close();
-This closes the Scanner object.
-It is a good habit to close input resources.
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) import
-This tells Java to use ready-made classes from a package.
-
-2) Scanner
-Scanner is a class for reading input.
-
-3) object
-An object is a usable copy of a class.
-Here, sc is a Scanner object.
-
-4) double
-double is a data type for decimal numbers.
-Example: 3.14, 5.0, 2.75
-
-5) variable
-A variable stores a value.
-Here, rad and area are variables.
-
-6) Math.PI
-This is Java’s built-in value of pi.
-It is more accurate than 3.14.
-
-7) operator
-An operator is a symbol that performs an action.
-* means multiplication.
-
-8) formula
-A formula is a math rule.
-For circle area, the formula is pi × r × r.
-
-9) println
-This prints the value and moves to the next line.
-
-10) close()
-This closes the Scanner object.
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Input handling
-The PDFs show that simple number input can be read directly with Scanner and nextDouble(). :contentReference[oaicite:3]{index=3}
-
-2) Decimal handling
-The PDFs say decimal precision matters in output.
-If the question asks for a fixed number of decimal places, use printf("%.2f", area);. :contentReference[oaicite:4]{index=4}
-
-3) Math constant
-Math.PI is a built-in constant for pi.
-This gives better accuracy than a hardcoded value.
-
-4) Type choice
-Using double is better than float for cleaner decimal work in many beginner problems.
-
-INPUT AND OUTPUT ACCORDING TO THE PDFs AND THIS CODE
-
-Input:
-One decimal number for the radius.
-
-Example input:
-5
-
-Output:
-The area of the circle.
-
-Example output:
-78.53981633974483
-
-If a problem asks for exactly 2 decimal places, then use:
-System.out.printf("%.2f", area);
-
-Then the output for radius 5 becomes:
-78.54
-
-The PDFs also warn that output formatting matters a lot, so sometimes the same answer can be marked wrong if the decimal style is not exact. 
-
-DRY RUN WITH AN EXAMPLE
-
-Example input:
-5
-
-Step 1:
-rad = 5
-
-Step 2:
-area = Math.PI * 5 * 5
-
-Step 3:
-area = 78.53981633974483
-
-Step 4:
-Print the value
-
-Final output:
-78.53981633974483
-
-COMMON BEGINNER MISTAKES
-
-1) Using int instead of double
-Then decimal radii will not work properly.
-
-2) Using 3.14 only
-That is less accurate than Math.PI.
-
-3) Forgetting the second radius
-The formula is radius × radius, not just radius.
-
-4) Missing semicolons
-Every statement in Java must end with a semicolon.
-
-5) Wrong output format
-If the judge wants 2 decimal places, println may not be enough.
-Use printf("%.2f", area).
-
-EASY INTERVIEW ANSWER
-
-This program reads the radius of a circle, calculates the area using pi multiplied by radius squared, and prints the result.
-
-ONE PRACTICE QUESTION
-
-Write a program to read the radius of a circle and print its circumference.
-Use the formula:
-Circumference = 2 × pi × radius
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Precision Handling: Simply using `System.out.println(area)` often leads to a 
+ * "Presentation Error" or "Wrong Answer" on platforms like TCS NQT because they 
+ * expect strict decimal formatting (e.g., `78.54` instead of `78.53981633974483`). 
+ * Always default to `System.out.printf("%.2f\n", value)` when decimals matter.
+ * 2. Math Constants: Never hardcode pi as `3.14` or `22/7`. Always use `Math.PI` 
+ * to guarantee maximum floating-point accuracy.
+ * 3. Data Types: Using `double` instead of `int` for the radius ensures the program 
+ * doesn't crash or incorrectly truncate values if a user inputs a decimal like `2.5`.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "As a final-year IT student, I know that even straightforward computational logic 
+ * can fail hidden test cases in strict environments if data types and precision aren't 
+ * handled carefully. To solve this, I first imported the Scanner class to handle standard 
+ * input and stored the radius in a `double` to seamlessly accommodate decimal values. 
+ * I calculated the area utilizing Java's built-in `Math.PI` constant for optimal accuracy, 
+ * rather than a hardcoded approximation. Finally, because competitive programming platforms 
+ * evaluate output strictly, I utilized `System.out.printf` to format the final area to 
+ * exactly two decimal places, preventing any presentation errors."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * The calculation of the area takes constant time. It performs the same number of 
+ * mathematical operations regardless of the input size.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * The program only allocates memory for a few primitive double variables (`rad`, `area`) 
+ * and a Scanner object, requiring a constant amount of auxiliary space.
+ */
