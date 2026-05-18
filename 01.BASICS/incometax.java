@@ -1,258 +1,118 @@
-import java.util.*; // This imports Scanner for input and other useful utility classes.
-
 /*
-    Income Tax Program
+ * ==========================================
+ * Problem Statement:
+ * ==========================================
+ * Write a Java program to calculate the income tax of an individual based on their 
+ * annual income. The program must read the income as an integer, evaluate it against 
+ * predefined tax slabs using conditional statements, calculate the tax amount, and 
+ * print the result. Any decimal tax values should be truncated to an integer.
+ *
+ * Tax Slabs:
+ * - Income < 5,00,000 : 0% tax
+ * - 5,00,000 <= Income < 10,00,000 : 20% tax
+ * - Income >= 10,00,000 : 30% tax
+ *
+ * ==========================================
+ * Input Format:
+ * ==========================================
+ * - A single integer representing the annual income.
+ *
+ * ==========================================
+ * Output Format:
+ * ==========================================
+ * - A string "your tax is :" followed immediately by the calculated integer tax amount.
+ *
+ * ==========================================
+ * Dry Run Example:
+ * ==========================================
+ * Input:
+ * 750000
+ *
+ * Step-by-step working:
+ * 1. Initialize Scanner and read income. (income = 750000)
+ * 2. Declare tax variable.
+ * 3. Evaluate if (750000 < 500000) -> FALSE.
+ * 4. Evaluate else if (750000 >= 500000 && 750000 < 1000000) -> TRUE.
+ * 5. Calculate tax: 750000 * 0.2 = 150000.0 (a double).
+ * 6. Cast the result to integer: (int) 150000.0 = 150000.
+ * 7. Assign 150000 to the 'tax' variable.
+ * 8. Print "your tax is :150000".
+ *
+ * Output:
+ * your tax is :150000
+ */
 
-    This program reads the yearly income of a person,
-    checks the tax slab, calculates tax, and prints the result.
+import java.util.Scanner;
 
-    The PDFs you shared say:
-    - when input is a single number, Scanner + nextInt() is the cleanest choice
-    - output formatting must be exact
-    - if decimals are needed, printf can be used
-    - extra spaces and wrong data types can cause mistakes in output
-    
-*/
+public class incometax { 
 
-public class incometax { // Keep the class name same as your code.
-
-    public static void main(String args[]) { // Main method: Java starts running from here.
-
-        Scanner sc = new Scanner(System.in); // Create Scanner object to read input from keyboard.
-
-        int income = sc.nextInt(); // Read the income value as an integer.
-
-        int tax; // Create a variable to store the tax amount.
-
-        if (income < 500000) { // If income is less than 5 lakh, tax is 0.
-            tax = 0; // No tax for this slab.
-        } else if (income >= 500000 && income < 1000000) { // If income is between 5 lakh and 10 lakh.
-            tax = (int) (income * 0.2); // Calculate 20% tax and convert it to int.
-        } else { // If income is 10 lakh or more.
-            tax = (int) (income * 0.3); // Calculate 30% tax and convert it to int.
+    public static void main(String[] args) { 
+        
+        // 1. Initialize Scanner for console input
+        Scanner sc = new Scanner(System.in); 
+        
+        // 2. Read the income as an integer
+        if (!sc.hasNextInt()) return; // Safety check
+        int income = sc.nextInt(); 
+        
+        // 3. Declare a variable to hold the final calculated tax
+        int tax; 
+        
+        // 4. Evaluate tax slabs using an if-else if-else ladder
+        if (income < 500000) { 
+            // Slab 1: Income below 5 Lakhs -> No tax
+            tax = 0; 
+        } 
+        else if (income >= 500000 && income < 1000000) { 
+            // Slab 2: Income between 5 Lakhs and 9,99,999 -> 20% tax
+            // income * 0.2 results in a double. We must explicitly cast it to (int) 
+            // because the 'tax' variable only holds integers.
+            tax = (int) (income * 0.2); 
+        } 
+        else { 
+            // Slab 3: Income 10 Lakhs or above -> 30% tax
+            tax = (int) (income * 0.3); 
         }
-
-        System.out.println("your tax is :" + tax); // Print the final tax amount.
-
-        sc.close(); // Close the Scanner after input is done.
+        
+        // 5. Print the final result concatenating the string and integer
+        System.out.println("your tax is :" + tax); 
+        
+        // 6. Close the scanner to release resources
+        sc.close(); 
     }
 }
 
 /*
-WHAT THIS CODE DOES
-
-This program reads a person's income and calculates tax based on income slabs.
-
-The tax rule used here is:
-- income below 500000 -> tax = 0
-- income from 500000 to 999999 -> tax = 20%
-- income 1000000 or more -> tax = 30%
-
-LINE-BY-LINE EXPLANATION
-
-import java.util.*;
-This line imports Scanner.
-Scanner is used to take input from the user.
-
-public class incometax
-This creates the Java class.
-The class name is kept exactly the same as your code.
-
-public static void main(String args[])
-This is the main method.
-Java starts execution from here.
-
-Scanner sc = new Scanner(System.in);
-This creates a Scanner object.
-It helps the program read input from the keyboard.
-
-int income = sc.nextInt();
-This reads one integer input from the user.
-Here, the input is income.
-
-int tax;
-This creates a variable named tax.
-It will store the calculated tax amount.
-
-if (income < 500000)
-This checks whether income is less than 500000.
-If true, tax becomes 0.
-
-tax = 0;
-This stores 0 in the tax variable.
-
-else if (income >= 500000 && income < 1000000)
-This checks whether income is between 500000 and 999999.
-The && symbol means both conditions must be true.
-
-tax = (int) (income * 0.2);
-This calculates 20% tax.
-The (int) part removes the decimal part.
-
-else
-This runs when none of the above conditions are true.
-That means income is 1000000 or more.
-
-tax = (int) (income * 0.3);
-This calculates 30% tax.
-Again, (int) removes the decimal part.
-
-System.out.println("your tax is :" + tax);
-This prints the final tax amount.
-The value of tax is added to the text.
-
-sc.close();
-This closes the Scanner object.
-It is a good habit after reading input.
-
-EXPLANATION OF ALL CODING TERMS USED
-
-1) import
-This tells Java to use a ready-made class or package.
-
-2) Scanner
-Scanner is used for input from the user.
-
-3) class
-A class is a container for Java code.
-
-4) public
-public means the code can be used from anywhere.
-
-5) static
-static means the method belongs to the class, not an object.
-
-6) void
-void means the method returns nothing.
-
-7) main
-main is the starting point of every Java program.
-
-8) String args[]
-This can store command-line arguments.
-
-9) int
-int is a data type for whole numbers.
-Example: 100, 500000, 25
-
-10) variable
-A variable stores a value.
-Here, income and tax are variables.
-
-11) if
-if checks a condition.
-
-12) else if
-else if checks another condition if the first one is false.
-
-13) else
-else runs when all previous conditions are false.
-
-14) &&
-This means AND.
-Both conditions must be true.
-
-15) >, <, >=
-These are comparison operators.
-They are used to compare values.
-
-16) type casting
-Type casting means converting one data type into another.
-Here, (int) converts a decimal result into a whole number.
-
-17) println
-This prints output and moves to the next line.
-
-18) close()
-This closes the Scanner object.
-
-IMPORTANT JAVA CONCEPTS USED
-
-1) Input handling
-The PDFs show that if input is a single number, nextInt() is the easiest and cleanest method. 
-
-2) Decision making
-The program uses if - else if - else to choose the correct tax slab.
-
-3) Type casting
-The PDFs explain type casting clearly.
-Here, the result of income * 0.2 or income * 0.3 is cast into int. 
-
-4) Output formatting
-The PDFs remind that exact output matters.
-If a problem asks for decimals, use printf.
-This program prints an integer tax amount, so println is fine. 
-
-INPUT AND OUTPUT
-
-Input:
-One integer value for income.
-
-Example input:
-750000
-
-Output:
-your tax is :150000
-
-Another example input:
-1200000
-
-Output:
-your tax is :360000
-
-DRY RUN WITH EXAMPLE
-
-Example input:
-750000
-
-Step 1:
-income = 750000
-
-Step 2:
-Check income < 500000
-This is false.
-
-Step 3:
-Check income >= 500000 && income < 1000000
-This is true.
-
-Step 4:
-tax = 750000 * 0.2
-tax = 150000
-
-Step 5:
-Print:
-your tax is :150000
-
-COMMON BEGINNER MISTAKES
-
-1) Forgetting semicolons
-Every Java statement must end with a semicolon.
-
-2) Using = instead of ==
-= means assignment, not comparison.
-
-3) Confusing tax slabs
-You must check the income range carefully.
-
-4) Forgetting type casting
-income * 0.2 gives a decimal result.
-If you store it in int, use (int).
-
-5) Extra spaces in output
-In coding tests, even small spacing mistakes can matter.
-
-6) Not closing Scanner
-It is a good habit to close it after use.
-
-EASY INTERVIEW ANSWER
-
-This program calculates income tax using if - else if - else.
-It reads income as input, checks the correct tax slab, calculates tax, and prints the result.
-
-ONE PRACTICE QUESTION
-
-Write a Java program that reads marks and prints:
-- "pass" if marks are 40 or more
-- "fail" if marks are below 40
-*/
+ * ==========================================
+ * IMPORTANT NOTES FOR REVISION:
+ * ==========================================
+ * 1. Type Casting: Multiplying an `int` (income) by a `double` (0.2) implicitly 
+ * promotes the entire operation to a `double`. Because the `tax` variable is 
+ * declared as an `int`, attempting `tax = income * 0.2;` will cause a compilation 
+ * error ("possible loss of precision"). You MUST use explicit casting: `(int) (income * 0.2)`.
+ * 2. Scope of Variables: The `tax` variable is declared outside the `if` blocks 
+ * but assigned inside them. This is valid because every possible path (if, else if, else) 
+ * assigns a value to it before the `println` statement uses it.
+ * 3. Logical Operators: `income >= 500000 && income < 1000000` is necessary to bound 
+ * the middle condition. While just `< 1000000` would work due to top-down evaluation, 
+ * explicit bounding is better practice for readability and preventing bugs if the ladder is modified.
+ *
+ * ==========================================
+ * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
+ * ==========================================
+ * "This program calculates income tax using a standard conditional ladder. I start by 
+ * capturing the user's income as an integer. I then route the control flow through an 
+ * `if-else if-else` structure representing the tax brackets. The critical part of this 
+ * code is handling the arithmetic. Since multiplying the integer income by a decimal 
+ * rate (like 0.2) yields a double, I perform an explicit narrowing cast `(int)` to safely 
+ * truncate the decimal and store the result back into the integer `tax` variable before printing."
+ *
+ * ==========================================
+ * TIME COMPLEXITY & SPACE COMPLEXITY:
+ * ==========================================
+ * TIME COMPLEXITY: O(1)
+ * The conditional checks and basic arithmetic operations all execute in constant time.
+ *
+ * SPACE COMPLEXITY: O(1)
+ * Memory usage is limited to a few primitive variables (`income`, `tax`) and the Scanner object.
+ */
