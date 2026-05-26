@@ -48,20 +48,20 @@ public class calculator {
     
     public static void main(String[] args) { 
         
-        // 1. Initialize the Scanner tool to read keyboard input [cite: 9]
+        // 1. Initialize the Scanner tool to read keyboard input
         Scanner sc = new Scanner(System.in); 
         
-        // 2. Prompt and read the first integer operand [cite: 11]
+        // 2. Prompt and read the first integer operand 
         System.out.println("enter a :"); 
         int a = sc.nextInt(); 
         
-        // 3. Prompt and read the second integer operand [cite: 16]
+        // 3. Prompt and read the second integer operand
         System.out.println("enter b :"); 
         int b = sc.nextInt(); 
         
         // 4. Prompt and read the arithmetic operator character
         System.out.println("enter operator :"); 
-        // sc.next() reads the next word, and .charAt(0) extracts its first character [cite: 285, 286]
+        // sc.next() reads the next word, and .charAt(0) extracts its first character
         char operator = sc.next().charAt(0); 
         
         // 5. Use a switch statement to direct flow based on the operator character
@@ -92,7 +92,7 @@ public class calculator {
                 System.out.println("wrong operator"); 
         }
 
-        // 6. Close the scanner to release system resources [cite: 22]
+        // 6. Close the scanner to release system resources 
         sc.close(); 
     }    
 }
@@ -103,12 +103,12 @@ public class calculator {
  * ==========================================
  * 1. Character Input Parsing: Java's `Scanner` does not have a `nextChar()` method. 
  * To read a single character, you must read the input as a String using `sc.next()` 
- * and then extract the first character using the `.charAt(0)` string method[cite: 286, 287].
+ * and then extract the first character using the `.charAt(0)` string method.
  * 2. The Switch "Fall-Through": The `break` keyword inside each case is critical. 
  * Without it, Java will continue executing all subsequent cases until it hits a break 
  * or the end of the switch block, regardless of whether the case matches.
  * 3. The "Scanner Bug" Avoidance: While the PDFs warn heavily about mixing `nextInt()` 
- * with `nextLine()`[cite: 1445, 1446], this code is safe because it uses `sc.next()`. 
+ * with `nextLine()`, this code is safe because it uses `sc.next()`. 
  * Unlike `nextLine()`, `sc.next()` skips any leading whitespace (including leftover 
  * newline characters) before reading the token.
  *
@@ -116,9 +116,9 @@ public class calculator {
  * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
  * ==========================================
  * "This implementation is a straightforward console-based calculator. I initialized 
- * a `Scanner` object to capture user inputs for two integers and an operator[cite: 9, 122]. Because 
+ * a `Scanner` object to capture user inputs for two integers and an operator. Because 
  * `Scanner` lacks a native character read method, I parsed the operator by capturing 
- * a string token with `next()` and extracting the index zero character[cite: 285, 286]. For the 
+ * a string token with `next()` and extracting the index zero character. For the 
  * core logic, I opted for a `switch` statement instead of cascaded `if-else` blocks to 
  * improve readability and execute the corresponding arithmetic operation based on the 
  * parsed character. I also included a default case as a robust fallback for invalid inputs."
