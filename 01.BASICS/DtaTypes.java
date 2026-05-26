@@ -83,7 +83,7 @@ public class DtaTypes {
  * 2. Type Checking: Java is a strongly, statically typed language. Every variable must 
  * be declared with a specific data type before it can be used, ensuring memory safety 
  * and type checking at compile time.
- * 3. Output Formatting: As noted in TCS NQT prep[cite: 1901], if exact decimal places 
+ * 3. Output Formatting: As noted in TCS NQT prep, if exact decimal places 
  * are needed for floats/doubles, use `System.out.printf("%.2f", value);` instead of `println`.
  *
  * ==========================================

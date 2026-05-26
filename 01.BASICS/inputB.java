@@ -27,7 +27,7 @@
  * 1. Initialize the Scanner object to read from System.in.
  * 2. The program pauses and waits for user input.
  * 3. The user types "12.5" and presses Enter.
- * 4. sc.nextFloat() parses the input as a float and stores it in 'price'. (price = 12.5f)
+ * 4. sc.nextFloat() parses the input as a float and stores it in 'price'.
  * 5. System.out.println(price) outputs the value to the screen.
  *
  * Output:
@@ -36,11 +36,11 @@
 
 import java.util.Scanner; 
 
-public class input { 
+public class inputB { 
 
     public static void main(String[] args) { 
         
-        // 1. Create a Scanner object to read input from the standard input stream (keyboard)[cite: 1322].
+        // 1. Create a Scanner object to read input from the standard input stream (keyboard).
         Scanner sc = new Scanner(System.in); 
         
         /*
@@ -72,14 +72,14 @@ public class input {
  * ==========================================
  * 1. Precision Formatting: In competitive programming platforms (like TCS NQT), 
  * decimal formatting must often be exact. If a question asks for exactly 2 decimal 
- * places, use `System.out.printf("%.2f\n", price);` instead of `println`[cite: 1428, 1594].
+ * places, use `System.out.printf("%.2f\n", price);` instead of `println`.
  * 2. The "Scanner Bug" Trap: A very common beginner mistake is calling `sc.nextInt()` 
  * or `sc.nextFloat()` and immediately following it with `sc.nextLine()`. The numeric 
  * methods read the number but leave the newline character ('\n' or Enter key) in the 
- * buffer[cite: 1447]. The subsequent `nextLine()` will instantly consume that newline and 
- * return an empty string[cite: 1446]. 
+ * buffer. The subsequent `nextLine()` will instantly consume that newline and 
+ * return an empty string. 
  * FIX: Always add a blank `sc.nextLine();` after reading numbers if you plan to read 
- * full strings next[cite: 1448, 1452].
+ * full strings next.
  *
  * ==========================================
  * HOW TO EXPLAIN THIS CODE IN FRONT OF INTERVIEWER:
