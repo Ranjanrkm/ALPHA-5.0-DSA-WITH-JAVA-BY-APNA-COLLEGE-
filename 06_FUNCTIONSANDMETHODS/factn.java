@@ -340,44 +340,20 @@ is required.
 INTERVIEW QUICK ANSWER
 =========================================================
 
-Q1. What is factorial of 5?
+✅ Q1. Why did you initialize f with 1 and not 0?
+A: Factorial is calculated using multiplication. If we initialize with 0, every multiplication result becomes 0. Therefore we start with 1, the multiplicative identity.
 
-Answer:
+✅ Q2. What happens when n = 0?
+A: The loop does not execute and f remains 1, which correctly represents 0! = 1.
 
-120
+✅ Q3. Can this code overflow?
+A: Yes. Since int has limited range, factorial values grow very quickly and overflow can occur for larger inputs. We can use long or BigInteger for larger numbers.
 
----------------------------------------------------------
+✅ Q4. Can you solve this recursively?
+A: Yes. Factorial can be implemented recursively using n * factorial(n-1) with a base case of n == 0 or n == 1.
 
-Q2. What is factorial of 0?
-
-Answer:
-
-1
-
----------------------------------------------------------
-
-Q3. What is the Time Complexity?
-
-Answer:
-
-O(n)
-
----------------------------------------------------------
-
-Q4. What is the Space Complexity?
-
-Answer:
-
-O(1)
-
----------------------------------------------------------
-
-Q5. Why initialize factorial with 1?
-
-Answer:
-
-Because multiplication starts from 1 and
-any number multiplied by 1 remains unchanged.
+✅ Q5. Why is the Time Complexity O(n)?
+A: Because the loop runs exactly n times and performs constant-time work in each iteration.
 
 =========================================================
 END OF FILE
