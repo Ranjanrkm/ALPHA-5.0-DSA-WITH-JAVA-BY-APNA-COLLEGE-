@@ -1,5 +1,4 @@
 
-
 public class Insert {
 
     static class Node {
